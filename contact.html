@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة مع القرآن - Contact</title>
+    <link rel="icon" href="logo.jpg" type="image/jpg" id="favicon">
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Afacad Flux font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tajawal font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo" id="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="videos.html">الفيديوات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-form-section">
+            <h2>تواصل معنا</h2>
+            <form action="https://formspree.io/f/mbljdznk" method="POST" id="contact-form">
+                <input type="text" name="name" placeholder="أدخل إسمك" required>
+                <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <textarea name="message" placeholder="أدخل الرسالة ..." required></textarea>
+                <button type="submit">أرسل</button>
+            </form>
+        </section>
+
+        <section class="thanks-section" style="display: none;" id="thanksCard">
+            <div class="thanks-card">
+                <h2>شكرا على التواصل معنا</h2>
+                <i class="fa-regular fa-circle-check"></i>
+            </div>
+        </section>
+            
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="logo.jpg" alt="Logo" class="footer-logo-img" id="footer-logo">
+                <p>رحلة مع القرآن</p>
+            </div>
+            <div class="footer-links">
+                <h3>روابط مفيدة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="videos.html">الفيديوات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>تابعنا على</h3>
+                <a href="https://www.instagram.com/rehlat-maa-al-quran" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@Quran-lk7" target="_blank" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>قناة رحلة مع القرآن</p>
+        </div>
+    </footer>
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAguhVayxzWxPe8a-ozYzT8TswssH1zNNM",
+            authDomain: "rehlat-maa-al-quran.firebaseapp.com",
+            projectId: "rehlat-maa-al-quran",
+            storageBucket: "rehlat-maa-al-quran.appspot.com",
+            messagingSenderId: "338933021675",
+            appId: "1:338933021675:web:fd4ada59f5e7a839f3b7ae",
+            measurementId: "G-120PTTW6YN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const storage = firebase.storage();
+
+
+        function displayLogos() {
+            const imageMapping = {
+                'logo': 'logo.jpg',
+                'footer-logo': 'footer-logo.jpg',
+                'favicon': 'fav-logo.jpg'
+            };
+
+            const storageRef = storage.ref('logos/');
+
+            Object.keys(imageMapping).forEach((id) => {
+                const imageElement = document.getElementById(id);
+                const imagePath = imageMapping[id];
+
+                storageRef.child(imagePath).getDownloadURL()
+                    .then((url) => {
+                        if (id == 'logo' || id == 'footer-logo') {
+                            imageElement.src = url;
+                        } else {
+                            imageElement.href = url;
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching image:', error);
+                    });
+            });
+        }
+
+
+        
+        
+        // Intercept form submission
+        document.getElementById("contact-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            try {
+                // Send the form data using fetch
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    document.querySelector(".thanks-section").style.display = "flex";
+                } else {
+                    alert("There was an issue with submitting your message. Please try again later.");
+                }
+            } catch (error) {
+                console.error("Error submitting the form:", error);
+                alert("An error occurred. Please try again later.");
+            }
+        });
+
+        document.getElementById('thanksCard').addEventListener('click', function () {
+            document.getElementById('thanksCard').style.display = 'none';
+        });
+
+
+        
+        function loadImages() {
+            displayLogos();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadImages);
+    </script>
+</body>
+</html>
