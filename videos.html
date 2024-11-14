@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>رحلة مع القرآن - Videos</title>
+    <meta name="description" content="رحلة مع القرآن هو قناة يوتيوب مخصصة لتلاوات القرآن الكريم. تابعنا للاستماع إلى أجمل التلاوات من مختلف القراء في جو روحاني هادئ.">
+    <meta name="keywords" content="قرآن, تلاوات, رحلة مع القرآن, قرآن كريم, تلاوة, يوتيوب, تلاوات القرآن, تلاوات قراء, قرآن صوت, تلاوات إسلامية">
+
     <link rel="icon" href="logo.jpg" type="image/jpg" id="favicon">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     
     <!-- Afacad Flux font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,8 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     
     <!-- Tajawal font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
     <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
@@ -24,19 +25,6 @@
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHLCX2D8R9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-CHLCX2D8R9');
-    </script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5890747611356036"
-         crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -56,13 +44,12 @@
     </header>
 
     <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="ابحث عن الفيديو...">
+        </div>
         <section class="uploads-section">
             <h2>الفيديوات</h2>
             <div class="videos-container">
-                <div class="video-container" data-video-id="fFdI6JYOP4k">
-                    <img src="075.JPG" alt="سورة القيامة تلاوة ياسر الدوسري" id="075">
-                    <p id="video-title">سورة القيامة تلاوة ياسر الدوسري</p>
-                </div>
                 <div class="video-container" data-video-id="DjZi6FeaHrE">
                     <img src="053.JPG" alt="سورة النجم تلاوة ياسر الدوسري" id="053p">
                     <p id="video-title">سورة النجم تلاوة ياسر الدوسري</p>
@@ -172,6 +159,10 @@
                     <p id="video-title">سورة الفاتحة تلاوة عبد الباسط</p>
                 </div>
             </div>
+            <div class="info-status"  style="display: none;">
+                <h2>لا توجد نتائج</h2>
+                <i class="fa-regular fa-face-dizzy"></i>
+            </div>      
         </section>
 
         <section class="video-watch-section" id="videoWatchSection" style="display: none;">
@@ -266,8 +257,7 @@
                 '036': '036.JPG',
                 '056': '056.JPG',
                 '078': '078.JPG',
-                '000': '000.JPG',
-                '075': '075.JPG'
+                '000': '000.JPG'
             };
 
             const storageRef = storage.ref('backgrounds/');
@@ -337,10 +327,28 @@
             });
         });
 
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchQuery = this.value.toLowerCase();
+            const videos = document.querySelectorAll('.video-container');
+            let hasResults = true;
 
+            videos.forEach(video => {
+                const title = video.querySelector('#video-title').textContent.toLowerCase();
+                if (title.includes(searchQuery)) {
+                    video.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    video.style.display = 'none';
+                    hasResults = false;
+                }
+            });
 
-
-
+            if (hasResults) {
+                document.getElementById('info-status').style.display = 'none';
+            } else {
+                document.getElementById('info-status').style.display = 'flex';
+            }
+        });
 
         function loadImages() {
             displayVideosBgs();
