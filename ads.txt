@@ -1,2 +1,1 @@
-# ads.txt for rehlat-maa-al-quran
 google.com, pub-5890747611356036, DIRECT, f08c47fec0942fa0
