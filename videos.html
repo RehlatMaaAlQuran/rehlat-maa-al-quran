@@ -1,364 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-5890747611356036">
-    <title>رحلة مع القرآن - Videos</title>
-    <meta name="description" content="رحلة مع القرآن هو قناة يوتيوب مخصصة لتلاوات القرآن الكريم. تابعنا للاستماع إلى أجمل التلاوات من مختلف القراء في جو روحاني هادئ.">
-    <meta name="keywords" content="قرآن, تلاوات, رحلة مع القرآن, قرآن كريم, تلاوة, يوتيوب, تلاوات القرآن, تلاوات قراء, قرآن صوت, تلاوات إسلامية">
+    <title>رحلة مع القرآن</title>
+    <meta name="description" content="قناة رحلة مع القرآن تقدم لكم تلاوات خاشعة ومميزة من أعذب الأصوات.">
+    <meta name="keywords" content="قرآن, تلاوات, رحلة مع القرآن">
+    <link rel="icon" href="assets/img/logo.jpg">
 
-    <link rel="icon" href="logo.jpg" type="image/jpg" id="favicon">
-
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-    <!-- Afacad Flux font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    
-    <!-- Tajawal font -->
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
+    <!-- Style -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5890747611356036"
-     crossorigin="anonymous"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
+    <!-- PureCounter -->
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new PureCounter();
+        });
+    </script>
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init();
+        });
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="logo.jpg" alt="Logo" id="logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">الصفحة الرئيسية</a></li>
-                    <li><a href="videos.html">الفيديوات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
+<header class="header">
+    <div class="header-content">
+        <a class="logo" href="index.html">
+            <img src="assets/img/logo.jpg" alt="قناة رحلة مع القرآن">
+            <h2>رحلة مع القرآن</h2>
+        </a>
+        <nav class="navmenu">
+            <ul>
+                <li><a href="index.html" class="links">الصفحة الرئيسية</a></li>
+                <li><a href="videos.html" class="links">الفيديوات</a></li>
+                <li><a href="about.html" class="links">من نحن</a></li>
+                <li><a href="contact.html" class="links">تواصل معنا</a></li>
+                <li><a href="https://www.youtube.com/@Quran-lk7?sub_confirmation=1" target="_blank" class="sub-btn">اشترك</a></li>
+            </ul>
+        </nav>
+        <a class="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></a>
+    </div>
+</header>
+<main>
+    <section id="SearchBar" class="search-bar-container">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="ابحث عن الفيديو...">
+            <input type="text" name="search" placeholder="ابحث عن الفيديو">
         </div>
-        <section class="uploads-section">
-            <h2>الفيديوات</h2>
-            <div class="videos-container">
-                <div class="video-container" data-video-id="DjZi6FeaHrE">
-                    <img src="053.JPG" alt="سورة النجم تلاوة ياسر الدوسري" id="053p">
-                    <p id="video-title">سورة النجم تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="B0ZvFT6_1Ik">
-                    <img src="055.JPG" alt="سورة الرحمان تلاوة ياسر الدوسري" id="055p">
-                    <p id="video-title">سورة الرحمان تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="LVhu3yzQuNs">
-                    <img src="067.JPG" alt="سورة الملك تلاوة ياسر الدوسري" id="067p">
-                    <p id="video-title">سورة الملك تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="-F8StPeNgDI">
-                    <img src="064.JPG" alt="سورة التغابن تلاوة ياسر الدوسري" id="064r">
-                    <p id="video-title">سورة التغابن تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="7lW9_OHLzdw">
-                    <img src="071.JPG" alt="سورة نوح تلاوة ياسر الدوسري" id="071r">
-                    <p id="video-title">سورة نوح تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="8_iGBJ8nC7M">
-                    <img src="053.JPG" alt="سورة النجم تلاوة مشاري راشد العفاسي" id="053r">
-                    <p id="video-title">سورة النجم تلاوة مشاري راشد العفاسي</p>
-                </div>
-                <div class="video-container" data-video-id="GC2fwZMm3w4">
-                    <img src="078.JPG" alt="سورة النبأ تلاوة ياسر الدوسري" id="078">
-                    <p id="video-title">سورة النبأ تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="sNHaccoL3_4">
-                    <img src="056.JPG" alt="سورة الواقعة تلاوة ياسر الدوسري" id="056">
-                    <p id="video-title">سورة الواقعة تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="ItuAT_vg8Uk">
-                    <img src="036.JPG" alt="سورة يس تلاوة ياسر الدوسري" id="036">
-                    <p id="video-title">سورة يس تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="75WO5qMNAyY">
-                    <img src="032.JPG" alt="سورة السجدة تلاوة ياسر الدوسري" id="032">
-                    <p id="video-title">سورة السجدة تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="9qySXSerBPQ">
-                    <img src="023_2.JPG" alt="سورة المؤمنون الجزء 2 تلاوة ياسر الدوسري" id="023_2">
-                    <p id="video-title">سورة المؤمنون الجزء 2 تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="a_uqu1LdRdU">
-                    <img src="089.JPG" alt="سورة الفجر تلاوة ياسر الدوسري" id="089">
-                    <p id="video-title">سورة الفجر تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="ecISh7qVbPM">
-                    <img src="023_1.JPG" alt="سورة المؤمنون الجزء 1 تلاوة ياسر الدوسري" id="023_1">
-                    <p id="video-title">سورة المؤمنون الجزء 1 تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="3BBYWcAPgp0">
-                    <img src="091.JPG" alt="سورة الشمس تلاوة ياسر الدوسري" id="091">
-                    <p id="video-title">سورة الشمس تلاوة ياسر الدوسري</p>
-                </div>
-                <div class="video-container" data-video-id="mUrlL4U8nYs">
-                    <img src="104.JPG" alt="سورة الهمزة تلاوة عبد الباسط" id="104">
-                    <p id="video-title">سورة الهمزة تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="0mgg3ZYlXuE">
-                    <img src="106.JPG" alt="سورة قريش تلاوة عبد الباسط" id="106">
-                    <p id="video-title">سورة قريش تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="99wzF_UAnyY">
-                    <img src="107.JPG" alt="سورة الماعون تلاوة عبد الباسط" id="107">
-                    <p id="video-title">سورة الماعون تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="he2BS77tyC8">
-                    <img src="067.JPG" alt="تكبيرات العيد لهاشم السقاف" id="000">
-                    <p id="video-title">تكبيرات العيد لهاشم السقاف</p>
-                </div>
-                <div class="video-container" data-video-id="kLyYS0dR-_8">
-                    <img src="109.JPG" alt="سورة الكافرون تلاوة عبد الباسط" id="109">
-                    <p id="video-title">سورة الكافرون تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="IIrkUWd9b-k">
-                    <img src="111.JPG" alt="سورة المسد تلاوة عبد الباسط" id="111">
-                    <p id="video-title">سورة المسد تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="M4O7BFwmH5c">
-                    <img src="112.JPG" alt="سورة الإخلاص تلاوة عبد الباسط" id="112">
-                    <p id="video-title">سورة الإخلاص تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="mvKnUMuV13E">
-                    <img src="110.JPG" alt="سورة النصر تلاوة عبد الباسط" id="110">
-                    <p id="video-title">سورة النصر تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="TEkpLLiIbc8">
-                    <img src="113.JPG" alt="سورة الفلق تلاوة عبد الباسط" id="113">
-                    <p id="video-title">سورة الفلق تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="PCkLFOHnaQc">
-                    <img src="114.JPG" alt="سورة الناس تلاوة عبد الباسط" id="114">
-                    <p id="video-title">سورة الناس تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="RD1R3H25fVc">
-                    <img src="062.JPG" alt="سورة الجمعة تلاوة عبد الباسط" id="062">
-                    <p id="video-title">سورة الجمعة تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="YUWb142TAPs">
-                    <img src="001_1.JPG" alt="سورة الفاتحة تلاوة عبد الباسط" id="001_1">
-                    <p id="video-title">سورة الفاتحة تلاوة عبد الباسط</p>
-                </div>
-                <div class="video-container" data-video-id="JTcghdIgcAU">
-                    <img src="001_2.JPG" alt="سورة الفاتحة تلاوة عبد الباسط" id="001_2">
-                    <p id="video-title">سورة الفاتحة تلاوة عبد الباسط</p>
-                </div>
-            </div>
-            <div class="info-status"  style="display: none;">
-                <h2>لا توجد نتائج</h2>
-                <i class="fa-regular fa-face-dizzy"></i>
-            </div>      
-        </section>
+    </section>
 
-        <section class="video-watch-section" id="videoWatchSection" style="display: none;">
-            <div class="video-watch-card">
-                <h2 id="videoTitle">سورة النجم تلاوة ياسر الدوسري</h2>
-                <iframe
-                    src="https://www.youtube.com/embed/DjZi6FeaHrE" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </section>
+    <section id="videos" class="videos-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">تلاوات قرآنية مختارة</h2>
+            <p class="section-description" data-aos="fade-up">استمتع بتلاوات مختارة من أعذب الأصوات القرآنية.</p>
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('DjZi6FeaHrE')">
+                    <img src="https://img.youtube.com/vi/DjZi6FeaHrE/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة النجم تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة النجم</p>
+                    <a href="video.html?video=سورة النجم تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('pZAAQmH_13M')">
+                    <img src="https://img.youtube.com/vi/pZAAQmH_13M/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة يوسف تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة يوسف</p>
+                    <a href="video.html?video=سورة يوسف تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('fFdI6JYOP4k')">
+                    <img src="https://img.youtube.com/vi/fFdI6JYOP4k/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة القيامة تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة القيامة</p>
+                    <a href="video.html?video=سورة القيامة تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
 
-    </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="logo.jpg" alt="Logo" class="footer-logo-img" id="footer-logo">
-                <p>رحلة مع القرآن</p>
-            </div>
-            <div class="footer-links">
-                <h3>روابط مفيدة</h3>
-                <ul>
-                    <li><a href="index.html">الصفحة الرئيسية</a></li>
-                    <li><a href="videos.html">الفيديوات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h3>تابعنا على</h3>
-                <a href="https://www.instagram.com/rehlat-maa-al-quran" target="_blank" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.youtube.com/@Quran-lk7" target="_blank" aria-label="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
+                <!-- Video 4 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('-F8StPeNgDI')">
+                    <img src="https://img.youtube.com/vi/-F8StPeNgDI/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة التغابن تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة التغابن</p>
+                    <a href="video.html?video=سورة التغابن تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 5 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('7lW9_OHLzdw')">
+                    <img src="https://img.youtube.com/vi/7lW9_OHLzdw/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة نوح تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة نوح</p>
+                    <a href="video.html?video=سورة نوح تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 6 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('8_iGBJ8nC7M')">
+                    <img src="https://img.youtube.com/vi/8_iGBJ8nC7M/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة النجم تلاوة مشاري راشد العفاسي</h4>
+                    <p>ترتيل مشاري راشد العفاسي لسورة النجم</p>
+                    <a href="video.html?video=سورة النجم تلاوة مشاري راشد العفاسي" class="watch-button">شاهد</a>
+                </div>
+
+
+                <!-- Video 7 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('GC2fwZMm3w4')">
+                    <img src="https://img.youtube.com/vi/GC2fwZMm3w4/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة النبأ تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة النبأ</p>
+                    <a href="video.html?video=سورة النبأ تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 8 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('sNHaccoL3_4')">
+                    <img src="https://img.youtube.com/vi/sNHaccoL3_4/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الواقعة تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة الواقعة</p>
+                    <a href="video.html?video=سورة الواقعة تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 9 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('03NjgCnz0_k')">
+                    <img src="https://img.youtube.com/vi/03NjgCnz0_k/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة المؤمنون تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة المؤمنون</p>
+                    <a href="video.html?video=سورة المؤمنون تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+
+
+                <!-- Video 10 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('ItuAT_vg8Uk')">
+                    <img src="https://img.youtube.com/vi/ItuAT_vg8Uk/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة يس تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة يس</p>
+                    <a href="video.html?video=سورة يس تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 11 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('75WO5qMNAyY')">
+                    <img src="https://img.youtube.com/vi/75WO5qMNAyY/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة السجدة تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة السجدة</p>
+                    <a href="video.html?video=سورة السجدة تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 12 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('9qySXSerBPQ')">
+                    <img src="https://img.youtube.com/vi/9qySXSerBPQ/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة المؤمنون الجزء الثاني تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة المؤمنون</p>
+                    <a href="video.html?video=سورة المؤمنون الجزء الثاني تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+
+
+                <!-- Video 13 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('a_uqu1LdRdU')">
+                    <img src="https://img.youtube.com/vi/a_uqu1LdRdU/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الفجر تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة الفجر</p>
+                    <a href="video.html?video=سورة الفجر تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 14 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('B0ZvFT6_1Ik')">
+                    <img src="https://img.youtube.com/vi/B0ZvFT6_1Ik/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الرحمان تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة الرحمان</p>
+                    <a href="video.html?video=سورة الرحمان تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 15 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('ecISh7qVbPM')">
+                    <img src="https://img.youtube.com/vi/ecISh7qVbPM/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة المؤمنون الجزء الأول تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة المؤمنون</p>
+                    <a href="video.html?video=سورة المؤمنون الجزء الأول تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+
+
+                <!-- Video 16 -->
+                <div class="video-card" data-aos="fade-up" onclick="openVideo('LVhu3yzQuNs')">
+                    <img src="https://img.youtube.com/vi/LVhu3yzQuNs/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الملك تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل الشيخ ياسر الدوسري لسورة الملك</p>
+                    <a href="video.html?video=سورة الملك تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 17 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100" onclick="openVideo('3BBYWcAPgp0')">
+                    <img src="https://img.youtube.com/vi/3BBYWcAPgp0/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الشمس تلاوة ياسر الدوسري</h4>
+                    <p>ترتيل ياسر الدوسري لسورة الشمس</p>
+                    <a href="video.html?video=سورة الشمس تلاوة ياسر الدوسري" class="watch-button">شاهد</a>
+                </div>
+                <!-- Video 18 -->
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200" onclick="openVideo('mUrlL4U8nYs')">
+                    <img src="https://img.youtube.com/vi/mUrlL4U8nYs/hqdefault.jpg" alt="Video Thumbnail">
+                    <h4>سورة الهمزة تلاوة عبد الباسط</h4>
+                    <p>ترتيل عبد الباسط لسورة الهمزة</p>
+                    <a href="video.html?video=سورة الهمزة تلاوة عبد الباسط" class="watch-button">شاهد</a>
+                </div>
+                
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>قناة رحلة مع القرآن</p>
+    </section>
+
+
+
+</main>
+
+<footer id="footer" class="footer light-background">
+  <div class="container footer-top d-flex justify-content-between align-items-start flex-wrap">
+    <!-- About Section -->
+    <div class="footer-about">
+      <h4 class="footer-title">رحلة مع القرآن</h4>
+      <p class="footer-description">استمتع بجمال تلاوات القرآن الكريم.</p>
+      <p class="footer-contact"><strong>Email:</strong> lq7286@gmail.com</p>
+      <div class="social-links d-flex mt-3">
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.youtube.com/@Quran-lk7" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.instagram.com/rihlat_maa_al_quran/" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4 class="footer-title">روابط سريعة</h4>
+      <ul>
+        <li><a href="index.html" class="footer-link">الصفحة الرئيسية</a></li>
+        <li><a href="about.html" class="footer-link">من نحن</a></li>
+        <li><a href="videos.html" class="footer-link">تلاوات</a></li>
+        <li><a href="contact.html" class="footer-link">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h4 class="footer-title">انضم إلى نشرتنا الإخبارية</h4>
+      <p class="footer-description">احصل على آخر التلاوات القرآنية والمحتوى الإسلامي.</p>
+      <form action="https://formspree.io/f/mbljbllg" method="post" class="php-email-form" id="Subscribe-Form">
+        <div class="newsletter-form">
+          <input type="email" name="email" placeholder="Enter your email">
+          <input type="submit" value="Subscribe" class="Subscribe-Form-Button">
         </div>
-    </footer>
+        <div class="status-messages">
+          <div class="loading">Loading...</div>
+          <div class="error-message"></div>
+          <div class="sent-message" id="Subscribe-Form-Status">لقد تم إرسال طلب الاشتراك الخاص بك. شكرا لك!</div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container text-center mt-4">
+    <p>&copy; 2024 <strong>رحلة مع القرآن</strong>. All Rights Reserved.</p>
+    <p class="credits">صمم بواسطة <a href="https://youtube.com/@Quran-lk7">رحلة مع القرآن</a></p>
+  </div>
+</footer>
 
 
-    <script>
-        const videoCard = document.getElementById('videoWatchSection');
-
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAguhVayxzWxPe8a-ozYzT8TswssH1zNNM",
-            authDomain: "rehlat-maa-al-quran.firebaseapp.com",
-            projectId: "rehlat-maa-al-quran",
-            storageBucket: "rehlat-maa-al-quran.appspot.com",
-            messagingSenderId: "338933021675",
-            appId: "1:338933021675:web:fd4ada59f5e7a839f3b7ae",
-            measurementId: "G-120PTTW6YN"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        const storage = firebase.storage();
-
-        function displayVideosBgs() {
-            const imageMapping = {
-                '064r': '064r.JPG',
-                '071r': '071r.JPG',
-                '053r': '053r.JPG',
-                '055p': '055p.JPG',
-                '067p': '067p.JPG',
-                '053p': '053p.JPG',
-                '001_2': '001_2.JPG',
-                '001_1': '001_1.JPG',
-                '062': '062.JPG',
-                '114': '114.JPG',
-                '113': '113.JPG',
-                '110': '110.JPG',
-                '112': '112.JPG',
-                '111': '111.JPG',
-                '109': '109.JPG',
-                '067': '067.JPG',
-                '107': '107.JPG',
-                '106': '106.JPG',
-                '104': '104.JPG',
-                '091': '091.JPG',
-                '023_1': '023_1.JPG',
-                '023_2': '023_2.JPG',
-                '089': '089.JPG',
-                '032': '032.JPG',
-                '036': '036.JPG',
-                '056': '056.JPG',
-                '078': '078.JPG',
-                '000': '000.JPG'
-            };
-
-            const storageRef = storage.ref('backgrounds/');
-
-            Object.keys(imageMapping).forEach((id) => {
-                const imgElement = document.getElementById(id);
-                const imgPath = imageMapping[id];
-
-                storageRef.child(imgPath).getDownloadURL()
-                    .then((url) => {
-                        imgElement.src = url;
-                    })
-                    .catch((error) => {
-                        console.error(`Failed to load image ${imgPath}:`, error);
-                    });
-            });
-        }
-
-        function displayLogos() {
-            const imageMapping = {
-                'logo': 'logo.jpg',
-                'footer-logo': 'footer-logo.jpg',
-                'favicon': 'fav-logo.jpg'
-            };
-
-            const storageRef = storage.ref('logos/');
-
-            Object.keys(imageMapping).forEach((id) => {
-                const imageElement = document.getElementById(id);
-                const imagePath = imageMapping[id];
-
-                storageRef.child(imagePath).getDownloadURL()
-                    .then((url) => {
-                        if (id == 'logo' || id == 'footer-logo') {
-                            imageElement.src = url;
-                        } else {
-                            imageElement.href = url;
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching image:', error);
-                    });
-            });
-        }
-
-        videoCard.addEventListener('click', function () {
-            document.getElementById('videoWatchSection').style.display = 'none';
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
-
-        function openVideoCard(videoId) {
-            const videoContainer = document.querySelector(`.video-container[data-video-id="${videoId}"]`);
-            const videoTitle = videoContainer.querySelector('p').innerText; // Get the video title
-            document.getElementById('videoTitle').innerText = videoTitle;
-
-            const videoDataId = videoContainer.getAttribute('data-video-id');
-
-            const iframe = document.querySelector('#videoWatchSection iframe');
-            iframe.src = `https://www.youtube.com/embed/${videoDataId}`;
-
-            document.getElementById('videoWatchSection').style.display = 'flex';
-        }
-
-        document.querySelectorAll('.video-container').forEach(video => {
-            video.addEventListener('click', function() {
-                const videoId = this.getAttribute('data-video-id');
-                openVideoCard(videoId);
-            });
-        });
-
-        document.getElementById('searchInput').addEventListener('input', function() {
-            const searchQuery = this.value.toLowerCase();
-            const videos = document.querySelectorAll('.video-container');
-            let hasResults = true;
-
-            videos.forEach(video => {
-                const title = video.querySelector('#video-title').textContent.toLowerCase();
-                if (title.includes(searchQuery)) {
-                    video.style.display = 'block';
-                    hasResults = true;
-                } else {
-                    video.style.display = 'none';
-                    hasResults = false;
-                }
-            });
-
-            if (hasResults) {
-                document.getElementById('info-status').style.display = 'none';
-            } else {
-                document.getElementById('info-status').style.display = 'flex';
-            }
-        });
-
-        function loadImages() {
-            displayVideosBgs();
-            displayLogos();
-        }
-
-        document.addEventListener('DOMContentLoaded', loadImages);
-    </script>
+    });
+</script>
+<script>
+  var form = document.getElementById("Subscribe-Form");
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("Subscribe-Form-Status");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "Thanks for your submission!";
+        form.reset()
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form"
+          }
+        })
+      }
+    }).catch(error => {
+      status.innerHTML = "Oops! There was a problem submitting your form"
+    });
+  }
+  form.addEventListener("submit", handleSubmit)
+</script>
+<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
