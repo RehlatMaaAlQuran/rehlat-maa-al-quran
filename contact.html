@@ -1,186 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account" content="ca-pub-5890747611356036">
-    <title>رحلة مع القرآن - Contact</title>
-    <link rel="icon" href="logo.jpg" type="image/jpg" id="favicon">
-    <meta name="description" content="رحلة مع القرآن هو قناة يوتيوب مخصصة لتلاوات القرآن الكريم. تابعنا للاستماع إلى أجمل التلاوات من مختلف القراء في جو روحاني هادئ.">
-    <meta name="keywords" content="قرآن, تلاوات, رحلة مع القرآن, قرآن كريم, تلاوة, يوتيوب, تلاوات القرآن, تلاوات قراء, قرآن صوت, تلاوات إسلامية">
+    <title>رحلة مع القرآن contact</title>
+    <meta name="description" content="قناة رحلة مع القرآن تقدم لكم تلاوات خاشعة ومميزة من أعذب الأصوات.">
+    <meta name="keywords" content="قرآن, تلاوات, رحلة مع القرآن">
+    <link rel="icon" href="assets/img/logo.jpg">
 
-
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-    <!-- Afacad Flux font -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    
-    <!-- Tajawal font -->
-    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Noto+Sans+JP:wght@100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
+    <!-- Style -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5890747611356036"
-     crossorigin="anonymous"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
+    <!-- PureCounter -->
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new PureCounter();
+        });
+    </script>
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init();
+        });
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <img src="logo.jpg" alt="Logo" id="logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">الصفحة الرئيسية</a></li>
-                    <li><a href="videos.html">الفيديوات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="contact-form-section">
+<header class="header">
+    <div class="header-content">
+        <a class="logo" href="index.html">
+            <img src="assets/img/logo.jpg" alt="قناة رحلة مع القرآن">
+            <h2>رحلة مع القرآن</h2>
+        </a>
+        <nav class="navmenu">
+            <ul>
+                <li><a href="index.html" class="links">الصفحة الرئيسية</a></li>
+                <li><a href="videos.html" class="links">الفيديوات</a></li>
+                <li><a href="about.html" class="links">من نحن</a></li>
+                <li><a href="contact.html" class="links">تواصل معنا</a></li>
+                <li><a href="https://www.youtube.com/@Quran-lk7?sub_confirmation=1" target="_blank" class="sub-btn">اشترك</a></li>
+            </ul>
+        </nav>
+        <a class="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></a>
+    </div>
+</header>
+<main>
+    <section id="ContactSection">
+        <div class="contact-container">
             <h2>تواصل معنا</h2>
-            <form action="https://formspree.io/f/mbljdznk" method="POST" id="contact-form">
-                <input type="text" name="name" placeholder="أدخل إسمك" required>
-                <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
-                <textarea name="message" placeholder="أدخل الرسالة ..." required></textarea>
-                <button type="submit">أرسل</button>
-            </form>
-        </section>
+            <p>يسعدنا أن نسمع منك! تواصل معنا للاستفسارات أو التعاون أو فقط لقول مرحبًا.</p>
 
-        <section class="thanks-section" style="display: none;" id="thanksCard">
-            <div class="thanks-card">
-                <h2>شكرا على التواصل معنا</h2>
-                <i class="fa-regular fa-circle-check"></i>
+            <div class="form-container">
+                <form action="https://formspree.io/f/xrbgdbbe" method="post" id="Contact-Form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="بريدك الالكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="رسالتك" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <p id="Contact-Form-Status"></p>
+                    </div>
+                    <button type="submit" class="submit-button">أرسل</button>
+                </form>
             </div>
-        </section>
-            
-    </main>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="logo.jpg" alt="Logo" class="footer-logo-img" id="footer-logo">
-                <p>رحلة مع القرآن</p>
-            </div>
-            <div class="footer-links">
-                <h3>روابط مفيدة</h3>
-                <ul>
-                    <li><a href="index.html">الصفحة الرئيسية</a></li>
-                    <li><a href="videos.html">الفيديوات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h3>تابعنا على</h3>
-                <a href="https://www.instagram.com/rehlat-maa-al-quran" target="_blank" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.youtube.com/@Quran-lk7" target="_blank" aria-label="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
+            <div class="social-links">
+                <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/rihlat_maa_al_quran/" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Quran-lk7" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>قناة رحلة مع القرآن</p>
+    </section>
+
+
+
+
+</main>
+
+<footer id="footer" class="footer light-background">
+  <div class="container footer-top d-flex justify-content-between align-items-start flex-wrap">
+    <!-- About Section -->
+    <div class="footer-about">
+      <h4 class="footer-title">رحلة مع القرآن</h4>
+      <p class="footer-description">استمتع بجمال تلاوات القرآن الكريم.</p>
+      <p class="footer-contact"><strong>Email:</strong> lq7286@gmail.com</p>
+      <div class="social-links d-flex mt-3">
+        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.youtube.com/@Quran-lk7" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.instagram.com/rihlat_maa_al_quran/" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <h4 class="footer-title">روابط سريعة</h4>
+      <ul>
+        <li><a href="index.html" class="footer-link">الصفحة الرئيسية</a></li>
+        <li><a href="about.html" class="footer-link">من نحن</a></li>
+        <li><a href="videos.html" class="footer-link">تلاوات</a></li>
+        <li><a href="contact.html" class="footer-link">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h4 class="footer-title">انضم إلى نشرتنا الإخبارية</h4>
+      <p class="footer-description">احصل على آخر التلاوات القرآنية والمحتوى الإسلامي.</p>
+      <form action="https://formspree.io/f/mbljbllg" method="post" class="php-email-form" id="Subscribe-Form">
+        <div class="newsletter-form">
+          <input type="email" name="email" placeholder="Enter your email">
+          <input type="submit" value="Subscribe" class="Subscribe-Form-Button">
         </div>
-    </footer>
+        <div class="status-messages">
+          <div class="loading">Loading...</div>
+          <div class="error-message"></div>
+          <div class="sent-message" id="Subscribe-Form-Status">لقد تم إرسال طلب الاشتراك الخاص بك. شكرا لك!</div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container text-center mt-4">
+    <p>&copy; 2024 <strong>رحلة مع القرآن</strong>. All Rights Reserved.</p>
+    <p class="credits">صمم بواسطة <a href="https://youtube.com/@Quran-lk7">رحلة مع القرآن</a></p>
+  </div>
+</footer>
 
 
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAguhVayxzWxPe8a-ozYzT8TswssH1zNNM",
-            authDomain: "rehlat-maa-al-quran.firebaseapp.com",
-            projectId: "rehlat-maa-al-quran",
-            storageBucket: "rehlat-maa-al-quran.appspot.com",
-            messagingSenderId: "338933021675",
-            appId: "1:338933021675:web:fd4ada59f5e7a839f3b7ae",
-            measurementId: "G-120PTTW6YN"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        const storage = firebase.storage();
-
-
-        function displayLogos() {
-            const imageMapping = {
-                'logo': 'logo.jpg',
-                'footer-logo': 'footer-logo.jpg',
-                'favicon': 'fav-logo.jpg'
-            };
-
-            const storageRef = storage.ref('logos/');
-
-            Object.keys(imageMapping).forEach((id) => {
-                const imageElement = document.getElementById(id);
-                const imagePath = imageMapping[id];
-
-                storageRef.child(imagePath).getDownloadURL()
-                    .then((url) => {
-                        if (id == 'logo' || id == 'footer-logo') {
-                            imageElement.src = url;
-                        } else {
-                            imageElement.href = url;
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching image:', error);
-                    });
-            });
-        }
-
-
-        
-        
-        // Intercept form submission
-        document.getElementById("contact-form").addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const formData = new FormData(form);
-
-            try {
-                // Send the form data using fetch
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    document.querySelector(".thanks-section").style.display = "flex";
-                } else {
-                    alert("There was an issue with submitting your message. Please try again later.");
-                }
-            } catch (error) {
-                console.error("Error submitting the form:", error);
-                alert("An error occurred. Please try again later.");
-            }
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
-
-        document.getElementById('thanksCard').addEventListener('click', function () {
-            document.getElementById('thanksCard').style.display = 'none';
-        });
-
-
-        
-        function loadImages() {
-            displayLogos();
-        }
-
-        document.addEventListener('DOMContentLoaded', loadImages);
-    </script>
+    });
+</script>
+<script>
+  var form = document.getElementById("Subscribe-Form");
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("Subscribe-Form-Status");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "Thanks for your submission!";
+        form.reset()
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form"
+          }
+        })
+      }
+    }).catch(error => {
+      status.innerHTML = "Oops! There was a problem submitting your form"
+    });
+  }
+  form.addEventListener("submit", handleSubmit)
+</script>
+<script>
+  var form = document.getElementById("Contact-Form");
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    var status = document.getElementById("Contact-Form-Status");
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+          'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "Thanks for your submission!";
+        form.reset()
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form"
+          }
+        })
+      }
+    }).catch(error => {
+      status.innerHTML = "Oops! There was a problem submitting your form"
+    });
+  }
+  form.addEventListener("submit", handleSubmit)
+</script>
+<script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
